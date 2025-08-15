@@ -24,28 +24,43 @@ import './App.css'
 import shangpinImg from './assets/shangpin.png'
 
 function App() {
+  // 商品数据
+  const itemData = {
+    name: '招牌香酥鸡柳＋年糕＋薯..',
+    specs: '数量 ×1， 1人份，微辣，少糖',
+    originalPrice: 45.8,
+    currentPrice: 32.15,
+    note: '不支持7天无理由退货'
+  };
+
+  // 计算订单金额
+  const totalAmount = itemData.originalPrice;
+  const discountAmount = totalAmount - itemData.currentPrice;
+  const payAmount = itemData.currentPrice;
+
   const orderData = {
     status: '完成',
     statusDesc: '订单已送达，请尽行节约，拒绝浪费，期待能再次光临',
     orderNumber: Math.floor(Math.random() * 900000000000) + 100000000000 + '',
-    totalAmount: '24.38',
-    discountAmount: '12',
-    payAmount: '24.38',
+    totalAmount: totalAmount.toFixed(2),
+    discountAmount: discountAmount.toFixed(2),
+    payAmount: payAmount.toFixed(2),
     payMethod: '微信支付',
-    orderTime: '2025-06-28 22:25:32',
-    deliveryTime: '2025-06-28 23:21:16',
+    orderTime: '2025-07-31 20:22:15',
+    payTime: '2025-07-31 20:22:32',
+    deliveryTime: '2025-07-31 20:59:16',
     recipient: '王照澄156****1187',
     address: '山东青岛市崂山区中韩街道株洲路78号L座1202',
     restaurant: {
-      name: '谨食•沙拉轻食健康餐（国际创新园店）',
+      name: '鸡柳大人（青岛李村店）',
       category: '外卖'
     },
     items: [{
-      name: '【优质蛋白】嫩煎牛排杂粮饭',
-      specs: '数量 ×1，焙煎芝麻酱（推荐）',
-      originalPrice: '36.88',
-      currentPrice: '28.85',
-      note: '不支持7天无理由退货'
+      name: itemData.name,
+      specs: itemData.specs,
+      originalPrice: itemData.originalPrice.toFixed(2),
+      currentPrice: itemData.currentPrice.toFixed(2),
+      note: itemData.note
     }]
   }
 
@@ -145,7 +160,7 @@ function App() {
           </>} onClick={copyOrderNumber} />
          <Cell className="with-arrow" title="交易凭证" extra="发生交易争议时，可作为判断依据" onClick={() => {}} />
          <Cell title="支付方式" extra={orderData.payMethod} />
-         <Cell title="支付时间" extra={orderData.orderTime} />
+         <Cell title="支付时间" extra={orderData.payTime} />
          <Cell title="下单时间" extra={orderData.orderTime} />
        </CellGroup>
 
