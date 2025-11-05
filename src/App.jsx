@@ -1,12 +1,12 @@
 import React from 'react'
-import { 
-  NavBar, 
-  Button, 
-  Cell, 
+import {
+  NavBar,
+  Button,
+  Cell,
   CellGroup,
   Tag
 } from '@nutui/nutui-react'
-import { 
+import {
   Del,
   Service,
   Comment,
@@ -22,14 +22,25 @@ import {
 import '@nutui/nutui-react/dist/style.css'
 import './App.css'
 import shangpinImg from './assets/shangpin.png'
+import shangpinImg1 from './assets/shangpin1.png'
+import shangpinImg2 from './assets/IMG_2993.jpg'
+import shangpinImg3 from './assets/2994.png.jpg'
+
 
 function App() {
   // 商品数据
-  const itemData = {
+  const itemData1 = {
     name: '招牌香酥鸡柳＋年糕＋薯..',
     specs: '数量 ×1， 1人份，微辣，少糖',
     originalPrice: 45.8,
     currentPrice: 32.15,
+    note: '不支持7天无理由退货'
+  };
+  const itemData = {
+    name: '毛血旺',
+    specs: '数量 ×1， 2人份，',
+    originalPrice: 65,
+    currentPrice: 33.2,
     note: '不支持7天无理由退货'
   };
 
@@ -46,13 +57,13 @@ function App() {
     discountAmount: discountAmount.toFixed(2),
     payAmount: payAmount.toFixed(2),
     payMethod: '微信支付',
-    orderTime: '2025-07-31 20:22:15',
-    payTime: '2025-07-31 20:22:32',
-    deliveryTime: '2025-07-31 20:59:16',
-    recipient: '王照澄156****1187',
+    orderTime: '2025-09-29 08:40:15',
+    payTime: '2025-09-29 09:11:32',
+    deliveryTime: '2025-09-29 10:11:16',
+    recipient: '鲁敏178****1750',
     address: '山东青岛市崂山区中韩街道株洲路78号L座1202',
     restaurant: {
-      name: '鸡柳大人（青岛李村店）',
+      name: '日欣家常菜',
       category: '外卖'
     },
     items: [{
@@ -85,13 +96,13 @@ function App() {
   return (
     <div className="takeout-order">
       {/* 顶部导航 */}
-       <NavBar 
+       <NavBar
          title={orderData.status}
          leftShow={true}
          leftText={<ArrowLeft size="18" />}
          onClickLeft={() => console.log('返回')}
        />
-      
+
       {/* 订单状态描述 */}
       <div className="status-section">
         <p className="status-desc">{orderData.statusDesc}</p>
@@ -129,11 +140,14 @@ function App() {
           <span className="restaurant-name">{orderData.restaurant.name}</span>
           <span className="arrow">›</span>
         </div>
-        
+
         {/* 商品信息 */}
          <div className="item-info">
            <div className="item-image">
-             <img src={shangpinImg} alt={orderData.items[0].name} />
+             {/*<img src={shangpinImg} alt={orderData.items[0].name} />*/}
+             {/*<img src={shangpinImg1} alt={orderData.items[0].name} />*/}
+             {/*<img src={shangpinImg2} alt={orderData.items[0].name} />*/}
+             <img src={shangpinImg3} alt={orderData.items[0].name} />
            </div>
           <div className="item-details">
             <h4>{orderData.items[0].name}</h4>
@@ -145,7 +159,7 @@ function App() {
             <span className="original-price">¥{orderData.items[0].originalPrice}</span>
           </div>
         </div>
-        
+
         <div className="order-summary">
           <Button size="small" type="default">评价商品</Button>
         </div>
